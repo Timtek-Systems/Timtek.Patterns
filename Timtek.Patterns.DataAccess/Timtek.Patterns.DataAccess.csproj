@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net9.0</TargetFramework>
+    <TargetFrameworks>net9.0;net8.0</TargetFrameworks>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
@@ -10,6 +10,9 @@
 IRepository&lt;TEntity, TKey&gt;,
 IUnitOfWork
 IQuerySpecification&lt;TEntity&gt;</Description>
+    <Copyright>Copyright © 2025 Timtek Systems, all rights reserved</Copyright>
+    <IncludeSymbols>True</IncludeSymbols>
+    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
   </PropertyGroup>
 
   <ItemGroup>

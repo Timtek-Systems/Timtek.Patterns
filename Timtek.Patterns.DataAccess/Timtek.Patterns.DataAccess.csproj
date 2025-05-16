@@ -4,6 +4,12 @@
     <TargetFramework>net9.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Title>Tried and tested Patterns for accessing relational databases.</Title>
+    <Description>Contains abstractions and base implementations for:
+IRepository&lt;TEntity, TKey&gt;,
+IUnitOfWork
+IQuerySpecification&lt;TEntity&gt;</Description>
   </PropertyGroup>
 
   <ItemGroup>

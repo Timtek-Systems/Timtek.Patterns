@@ -107,7 +107,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         var count = results.Count;
         if (count > 1)
             throw new InvalidOperationException("More than one result was returned; check your specification!");
-        return count == 0 ? Maybe<TOut>.Empty : Maybe<TOut>.From(results.SingleOrDefault());
+        return count == 0 ? Maybe<TOut>.Empty : Maybe<TOut>.From(results.SingleOrDefault()!);
     }
 
     /// <summary>Adds one entity to the entity set and ensures that it has a unique identifier.</summary>

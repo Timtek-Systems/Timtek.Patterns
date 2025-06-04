@@ -27,7 +27,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     ///     The database context that will be used to persist and retrieve entities from
     ///     permanent storage.
     /// </param>
-    internal Repository(DbContext context)
+    public Repository(DbContext context)
     {
         Context = context;
     }

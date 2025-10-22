@@ -1,7 +1,7 @@
 ﻿namespace Timtek.Patterns.DataAccess.EFCore;
 
 /// <summary>
-///     Settings related to the Final Test Audit Database
+///     Settings related to the database provider.
 /// </summary>
 public interface IDbSettings
 {

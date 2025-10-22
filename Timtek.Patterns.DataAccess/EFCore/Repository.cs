@@ -20,17 +20,14 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     ///     The database context that will be used to persist and retrieve entities from permanent
     ///     storage.
     /// </summary>
-    private readonly DbContext Context;
+    private readonly DbContext context;
 
     /// <summary>Initializes a new instance of the <see cref="Repository{TEntity,TKey}" /> class.</summary>
     /// <param name="context">
     ///     The database context that will be used to persist and retrieve entities from
     ///     permanent storage.
     /// </param>
-    public Repository(DbContext context)
-    {
-        Context = context;
-    }
+    public Repository(DbContext context) => this.context = context;
 
     #region Implementation of IRepository<TEntity>
 
@@ -41,7 +38,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     {
         try
         {
-            var found = Context.Set<TEntity>().Find(id);
+            var found = context.Set<TEntity>().Find(id);
             return found == null ? Maybe<TEntity>.Empty : found.AsMaybe();
         }
         catch (Exception)
@@ -52,7 +49,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     /// <summary>Gets an enumerable collection of all entities in the entity set.</summary>
     /// <returns><see cref="System.Collections.Generic.IEnumerable{T}" />.</returns>
-    public IEnumerable<TEntity> GetAll() => Context.Set<TEntity>().ToList();
+    public IEnumerable<TEntity> GetAll() => context.Set<TEntity>().ToList();
 
     /// <summary>
     ///     Gets all entities that satisfy the supplied specification. If a
@@ -84,7 +81,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     private IQueryable<TOut> QueryWithFetchStrategy<TOut>(IQuerySpecification<TEntity, TOut> specification)
         where TOut : class
     {
-        var query = specification.GetQuery(Context.Set<TEntity>());
+        var query = specification.GetQuery(context.Set<TEntity>());
         foreach (var includePath in specification.FetchStrategy.IncludePaths) query = query.Include(includePath);
 
         return query;
@@ -102,9 +99,9 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     /// </exception>
     public Maybe<TOut> GetMaybe<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class
     {
-        var query = QueryWithFetchStrategy(specification);
+        var query   = QueryWithFetchStrategy(specification);
         var results = query.ToList();
-        var count = results.Count;
+        var count   = results.Count;
         if (count > 1)
             throw new InvalidOperationException("More than one result was returned; check your specification!");
         return count == 0 ? Maybe<TOut>.Empty : Maybe<TOut>.From(results.SingleOrDefault()!);
@@ -112,7 +109,7 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     /// <summary>Adds one entity to the entity set and ensures that it has a unique identifier.</summary>
     /// <param name="entity">The entity to add.</param>
-    public void Add(TEntity entity) => Context.Set<TEntity>().Add(entity);
+    public void Add(TEntity entity) => context.Set<TEntity>().Add(entity);
 
     /// <summary>Adds entities to the entity set and ensures that they each have a unique identifier.</summary>
     /// <param name="entities">The entities.</param>
@@ -124,11 +121,11 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
 
     /// <summary>Removes one entity from the entity set.</summary>
     /// <param name="entity">The entity to remove.</param>
-    public void Remove(TEntity entity) => Context.Set<TEntity>().Remove(entity);
+    public void Remove(TEntity entity) => context.Set<TEntity>().Remove(entity);
 
     /// <summary>Removes entities from the entity set.</summary>
     /// <param name="entities">The entities.</param>
-    public void Remove(IEnumerable<TEntity> entities) => Context.Set<TEntity>().RemoveRange(entities);
+    public void Remove(IEnumerable<TEntity> entities) => context.Set<TEntity>().RemoveRange(entities);
 
     #endregion
 }

@@ -13,7 +13,28 @@ IQuerySpecification&lt;TEntity&gt;</Description>
     <Copyright>Copyright © 2025 Timtek Systems, all rights reserved</Copyright>
     <IncludeSymbols>True</IncludeSymbols>
     <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+    <PackageProjectUrl>https://github.com/Timtek-Systems/Timtek.Patterns</PackageProjectUrl>
+    <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+    <RepositoryUrl>https://github.com/Timtek-Systems/Timtek.Patterns</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>EF-Core;Data Access;DAL;Relational;Patterns;Database</PackageTags>
+    <PackageIcon>Timtek.Patterns.DataAccess-128x128.png</PackageIcon>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Timtek.Patterns.DataAccess-128x128.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\ReadMe.md">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">

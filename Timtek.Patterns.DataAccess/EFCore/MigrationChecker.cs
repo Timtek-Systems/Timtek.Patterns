@@ -12,7 +12,7 @@ public class MigrationChecker(DbContext context, ILog log)
     public async Task ThrowIfPendingMigrationsAsync()
     {
         var pendingMigrationsEnumerable = await context.Database.GetPendingMigrationsAsync().ContinueOnAnyThread();
-        var pendingMigrations = pendingMigrationsEnumerable.ToList();
+        var pendingMigrations           = pendingMigrationsEnumerable.ToList();
         if (pendingMigrations.Any())
         {
             log.Error()

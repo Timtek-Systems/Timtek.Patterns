@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using JetBrains.Annotations;
+using Microsoft.EntityFrameworkCore;
 using TA.Utils.Core;
 using Timtek.Patterns.DataAccess.Query;
 
@@ -27,7 +28,8 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
     ///     The database context that will be used to persist and retrieve entities from
     ///     permanent storage.
     /// </param>
-    internal Repository(DbContext context)
+    [UsedImplicitly]
+    public Repository(DbContext context)
     {
         Context = context;
     }

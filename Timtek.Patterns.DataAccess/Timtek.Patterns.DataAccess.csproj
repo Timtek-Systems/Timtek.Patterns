@@ -1,49 +1,60 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-  <PropertyGroup>
-    <TargetFrameworks>net8.0;net9.0</TargetFrameworks>
-    <ImplicitUsings>enable</ImplicitUsings>
-    <Nullable>enable</Nullable>
-    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-    <Title>Tried and tested Patterns for accessing relational databases.</Title>
-    <Description>Contains abstractions and base implementations for:
-IRepository&lt;TEntity, TKey&gt;,
-IUnitOfWork
-IQuerySpecification&lt;TEntity&gt;</Description>
-    <Copyright>Copyright © 2025 Timtek Systems, all rights reserved</Copyright>
-    <IncludeSymbols>True</IncludeSymbols>
-    <EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
-    <PackageProjectUrl>https://github.com/Timtek-Systems/Timtek.Patterns</PackageProjectUrl>
-    <PackageReadmeFile>ReadMe.md</PackageReadmeFile>
-    <RepositoryUrl>https://github.com/Timtek-Systems/Timtek.Patterns</RepositoryUrl>
-    <RepositoryType>git</RepositoryType>
-    <PackageTags>EF-Core;Data Access;DAL;Relational;Patterns;Database</PackageTags>
-    <PackageIcon>Timtek.Patterns.DataAccess-128x128.png</PackageIcon>
-    <PackageLicenseExpression>MIT</PackageLicenseExpression>
-  </PropertyGroup>
+	<PropertyGroup>
+		<TargetFrameworks>net8.0;net10.0</TargetFrameworks>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<Title>Tried and tested Patterns for accessing relational databases.</Title>
+		<Description>
+			Contains abstractions and base implementations for:
+			IRepository&lt;TEntity, TKey&gt;,
+			IUnitOfWork
+			IQuerySpecification&lt;TEntity&gt;
+		</Description>
+		<Copyright>Copyright © 2025 Timtek Systems, all rights reserved</Copyright>
+		<IncludeSymbols>True</IncludeSymbols>
+		<EnforceCodeStyleInBuild>True</EnforceCodeStyleInBuild>
+		<PackageProjectUrl>https://github.com/Timtek-Systems/Timtek.Patterns</PackageProjectUrl>
+		<PackageReadmeFile>ReadMe.md</PackageReadmeFile>
+		<RepositoryUrl>https://github.com/Timtek-Systems/Timtek.Patterns</RepositoryUrl>
+		<RepositoryType>git</RepositoryType>
+		<PackageTags>EF-Core;Data Access;DAL;Relational;Patterns;Database</PackageTags>
+		<PackageIcon>Timtek.Patterns.DataAccess-128x128.png</PackageIcon>
+		<PackageLicenseExpression>MIT</PackageLicenseExpression>
+	</PropertyGroup>
 
-  <ItemGroup>
-    <Content Include="Timtek.Patterns.DataAccess-128x128.png">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </Content>
-  </ItemGroup>
+	<ItemGroup>
+		<Content Include="Timtek.Patterns.DataAccess-128x128.png">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</Content>
+	</ItemGroup>
 
-  <ItemGroup>
-    <None Include="..\ReadMe.md">
-      <Pack>True</Pack>
-      <PackagePath>\</PackagePath>
-    </None>
-  </ItemGroup>
+	<ItemGroup>
+		<None Include="..\ReadMe.md">
+			<Pack>True</Pack>
+			<PackagePath>\</PackagePath>
+		</None>
+	</ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.3" />
-    <PackageReference Include="TA.Utils.Core" Version="2.8.1" />
-  </ItemGroup>
+	<!-- Common package references -->
+	<ItemGroup>
+		<PackageReference Include="GitVersion.MsBuild" Version="5.12.0">
+			<PrivateAssets>all</PrivateAssets>
+			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+		</PackageReference>
+		<PackageReference Include="TA.Utils.Core" Version="2.8.1" />
+	</ItemGroup>
+	<!-- Target framework specific package references for net8.0 (especially EF Core) -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.3" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="9.0.3" />
+	</ItemGroup>
+	<!-- Target framework specific package references for net10.0 (especially EF Core) -->
+	<ItemGroup Condition="'$(TargetFramework)' == 'net10.0'">
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.2" />
+		<PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.2" />
+	</ItemGroup>
 
 </Project>

@@ -1,23 +1,7 @@
-tag-prefix: '[vV]?'
-workflow: GitFlow/v1
-
-branches:
-  # Override bugfix behaviour to produce alpha builds off develop
-  bugfix:
-    regex: ^bugfix(es)?[/-]
-    mode: ContinuousDeployment   # increment pre-release number each commit
-    label: alpha                 # GitVersion v6 uses 'label' (not 'tag')
-    increment: Inherit           # follow the base line (typically Minor from develop)
-    source-branches:
-      - develop                  # ensure the version source aligns with develop
-    track-merge-message: true
-
-  # main/master maintains a stable version, incrementing only build metadata, unless tagged.
-  main:
-    regex: ^master$|^main$
-    mode: ContinuousDelivery
-    label: null                  # keep main stable (no pre-release on v6)
-    increment: Inherit
-    prevent-increment:
-      of-merged-branch: true
-    track-merge-message: true
+assembly-versioning-scheme: MajorMinorPatch
+mode: ContinuousDeployment
+continuous-delivery-fallback-tag: ''
+branches: {}
+ignore:
+  sha: []
+merge-message-formats: {}

@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 18
-VisualStudioVersion = 18.0.11116.177 d18.0
+VisualStudioVersion = 18.0.11116.177
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Timtek.Patterns.DataAccess", "Timtek.Patterns.DataAccess\Timtek.Patterns.DataAccess.csproj", "{22A74CC9-EA5C-4BAE-ACFE-B4C2EC387B8D}"
 EndProject
@@ -9,6 +9,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Shared", "Solution
 	ProjectSection(SolutionItems) = preProject
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
+		dotnet-tools.json = dotnet-tools.json
+		GitVersion.yml = GitVersion.yml
 		ReadMe.md = ReadMe.md
 	EndProjectSection
 EndProject

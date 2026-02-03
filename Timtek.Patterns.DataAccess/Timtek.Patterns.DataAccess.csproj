@@ -44,7 +44,7 @@
 			<PrivateAssets>all</PrivateAssets>
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 		</PackageReference>
-		<PackageReference Include="TA.Utils.Core" Version="2.8.1" />
+		<PackageReference Include="TA.Utils.Core" Version="3.0.0" />
 	</ItemGroup>
 	<!-- Target framework specific package references for net8.0 (especially EF Core) -->
 	<ItemGroup Condition="'$(TargetFramework)' == 'net8.0'">

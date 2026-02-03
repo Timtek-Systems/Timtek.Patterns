@@ -1,7 +1,27 @@
-assembly-versioning-scheme: MajorMinorPatch
-mode: ContinuousDeployment
-continuous-delivery-fallback-tag: ''
-branches: {}
-ignore:
-  sha: []
-merge-message-formats: {}
+workflow: GitFlow/v1
+tag-prefix: '[v]?'
+branches:
+  master:
+    label: ''
+    increment: Patch
+    regex: ^master$
+  main:
+    label: ''
+    increment: Patch
+    regex: ^main$
+  release:
+    label: beta
+    increment: None
+    regex: ^releases?[/-]
+  hotfix:
+    label: beta
+    increment: Patch
+    regex: ^hotfix(es)?[/-]
+  develop:
+    label: alpha
+    increment: Minor
+    regex: ^dev(elop)?(ment)?$
+  feature:
+    label: alpha.{BranchName}
+    increment: Minor
+    regex: ^features?[/-]

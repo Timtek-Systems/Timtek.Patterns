@@ -77,6 +77,13 @@ public sealed class Repository<TEntity, TKey> : IRepository<TEntity, TKey>
         return query.Any();
     }
 
+    /// <inheritdoc />
+    public int Count<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class
+    {
+        var query = QueryWithFetchStrategy(specification);
+        return query.Count();
+    }
+
     /// <summary>
     ///     Builds an <see cref="ObjectQuery{T}" /> that takes account of the eager loading fetch
     ///     strategy.

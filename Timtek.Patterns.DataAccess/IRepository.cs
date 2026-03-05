@@ -69,4 +69,15 @@ public interface IRepository<TEntity, TKey> where TEntity : class, IDomainEntity
     /// <typeparam name="TOut">The type of the output entity.</typeparam>
     /// <returns><c>>true</c> if any items satisfy the query, <c>false</c> otherwise.</returns>
     bool Any<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class;
+
+    /// <summary>
+    ///     Counts the number of entities that satisfy the supplied query specification.
+    ///     This is more efficient than <see cref="AllSatisfying{TOut}" /> where only a count is needed,
+    ///     as it avoids returning a potentially large result set that is immediately discarded after counting.
+    ///     The counting is performed on the database engine.
+    /// </summary>
+    /// <param name="specification">A valid query specification in terms of <typeparamref name="TOut" />.</param>
+    /// <typeparam name="TOut">The type of the output entity.</typeparam>
+    /// <returns>The count of items that satisfy the query.</returns>
+    int Count<TOut>(IQuerySpecification<TEntity, TOut> specification) where TOut : class;
 }

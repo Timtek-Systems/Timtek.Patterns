@@ -8,6 +8,13 @@
         "dotnet-gitversion"
       ],
       "rollForward": false
+    },
+    "timtek.gitflowversion.tool": {
+      "version": "1.0.4",
+      "commands": [
+        "gitflowversion"
+      ],
+      "rollForward": false
     }
   }
 }
